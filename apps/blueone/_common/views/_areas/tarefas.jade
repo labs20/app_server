@@ -1,0 +1,61 @@
+// Created by labs on 19/02/16.
+
+#tarefas.ui.fluid.container
+
+
+    div.ui.grid(style='height: 100%;')
+
+        // Menu
+        #menu_area.four.wide.column
+
+            #menu_lateral.ui.cards(style='margin: 2px')
+                div.card(style='box-shadow: 0px 0px 15px -2px black !important; border-radius: 5px')
+                    .content
+                        i(rv-class="data.row.icon | add ' left floated big circular'")
+                        .header {data.row.label}
+                        .meta {data.row.info}
+                        .description
+
+                    .extra.content
+                        div.ui.vertical.fluid.pointing.menu
+                            a.item.left(
+                                rv-each-item='data.row.submenu',
+                                rv-data-action='item.api',
+                                rv-data-area='item.area'
+                            )
+                                i(rv-class='data.row.icon')
+                                | {item.label}
+
+
+        // Area Central
+        div.twelve.wide.column
+
+            // Janela central
+            #tarefas_list.left.aligned.hz-box.ts-round.ts-center.ts-hidden(style='height: 84%; width: 94%;')
+                .secondary.ui.menu
+
+                    // Título da janela
+                    h3.ui.left.aligned.dividing.fluid.header
+                        i.icon(rv-class='info.icon')
+                        .content
+                            |   {info.titulo}
+                            .sub.header {info.info}
+
+                    // Área de pesquisa e botões
+                    .right.menu
+                        .item
+                            div.ui.green.icon.add.button(data-popup='insert')
+                                i.home.add.icon
+                            div.ui.mini.icon.input.search
+                                input#search(type='text', placeholder='Pesquisar...', data-filter='#painel_list .rows', data-el='.row')
+                                .ui.icon.button
+                                    i.search.icon
+
+                // Listagem
+                #tarefas_listagem.cards.ui(style='height: 88%; overflow: scroll;')
+                    div.ui.fluid.card(rv-each-row='data.rows')
+                        div.left.aligned.content
+                            div.header {row.map_clientes_key}
+                            div.meta Friend
+                            div.description
+                                Elliot Fu is a film-maker from New York.

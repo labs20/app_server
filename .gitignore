@@ -26,6 +26,9 @@ build/Release
 # Dependency directory
 node_modules
 
+# but not
+tshark
+
 # Optional npm cache directory
 .npm
 

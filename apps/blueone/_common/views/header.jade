@@ -1,0 +1,49 @@
+doctype html
+html
+    head
+        title= title
+
+        meta(charset = 'utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+
+        // JQuery
+        script(type='text/javascript', src='js/3rd/jquery/jquery-2.1.1.min.js')
+        script(type='text/javascript', src='js/3rd/jquery/jquery-ui.min.js')
+
+        // Alertify
+        link(rel='stylesheet', href="js/3rd/alertifyjs/css/alertify.min.css")
+        link(rel='stylesheet', href="js/3rd/alertifyjs/css/themes/default.min.css", id="toggleCSS")
+        script(type="application/javascript", src="js/3rd/alertifyjs/alertify.min.js")
+
+        // Semantic
+        link(rel='stylesheet', href='js/3rd/semantic/dist/semantic.min.css')
+        script(type='application/javascript', src='js/3rd/semantic/dist/semantic.js')
+
+        // Rivet
+        script(type='text/javascript', src='js/3rd/rivets/rivets.min.js')
+        script(type='text/javascript', src='js/3rd/rivets/stdlib.js')
+
+        // Momentjs
+        script(type='text/javascript', src='js/3rd/moment/moment-with-locales.min.js')
+
+        // Tshark
+        link(rel="stylesheet", href="js/v3/_engine.css")
+        script(type="application/javascript", src="js/v3/_extends.js")
+        script(type="application/javascript", src="js/v3/tshark.js")
+        script(type="application/javascript", src="js/v3/_api.js")
+        script(type="application/javascript", src="js/v3/_modulo.js")
+        script(type="application/javascript", src="js/v3/_dataset.js")
+        script(type="application/javascript", src="js/v3/_forms.js")
+
+        // App
+        link(rel='stylesheet', href='css/app.css')
+        link(rel='stylesheet', href='css/desktop.css')
+
+        script(type='application/javascript', src='index.js')
+        script(type='application/javascript', src='configuracoes.js')
+
+    body
+        block content
+
+

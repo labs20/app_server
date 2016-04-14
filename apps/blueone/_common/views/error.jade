@@ -1,0 +1,8 @@
+extends header
+
+block content
+  h1= message
+  hr
+  h2= error.status
+  hr
+  pre #{error.stack}

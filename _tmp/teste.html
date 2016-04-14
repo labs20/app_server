@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Site Properties -->
+    <title>Homepage - Semantic</title>
+    <link rel="stylesheet" type="text/css" href="libs/3rd/semantic/dist/semantic.min.css">
+
+    <script src="libs/3rd/jquery/jquery-2.1.1.min.js"></script>
+    <script src="libs/3rd/semantic/dist/semantic.min.js"></script>
+    <script>
+
+        var tries = [0, 0, 0];
+        function getData(l){
+            var log     = $('#log' + l)
+                , url   = $('#url' + l).val();
+
+            $.get(url)
+                .done(function (data) {
+                    log.val(log.val() + "\n - " + tries[l] + ': ' + data);
+                    tries[l]++;
+                    if (tries[l] < $('#rounds').val()){
+                        getData(l)
+                    } else {
+                        log.val(log.val() + "\n\nDONE!!");
+                    }
+                });
+
+        }
+
+        $(document)
+                .ready(function() {
+
+
+                    $("#run").on('click', function(){
+
+                        tries = [0, 0, 0];
+                        for (var l=1;l<4;l++) {
+                            getData(l)
+                        }
+
+                    });
+
+                })
+        ;
+
+
+    </script>
+</head>
+<body>
+
+
+<h1 class="ui center aligned header">Teste de concorrência</h1>
+
+<div class="ui container">
+
+<div class="ui form">
+    <div class="three fields">
+        <div class="field">
+            <label>URL 1</label>
+            <input id="url1" type="text" value="http://localhost:3000/casasjoao">
+        </div>
+        <div class="field">
+            <label>URL 2</label>
+            <input id="url2" type="text" value="http://localhost:3000/superloja/filial1">
+        </div>
+        <div class="field">
+            <label>URL 3</label>
+            <input id="url3" type="text" value="http://localhost:3000/superloja/filial2">
+        </div>
+    </div>
+
+    <div class="three fields">
+        <div class="field">
+            <textarea id="log1" rows="32"></textarea>
+        </div>
+        <div class="field">
+            <textarea id="log2" rows="32"></textarea>
+        </div>
+        <div class="field">
+            <textarea id="log3" rows="32"></textarea>
+        </div>
+    </div>
+
+    <div class="ui action input">
+        <input id="rounds" type="text" value="50">
+        <button id="run" class="ui green button">Rodar</button>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>

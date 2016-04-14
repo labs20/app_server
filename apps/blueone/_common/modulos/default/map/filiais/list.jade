@@ -1,0 +1,49 @@
+//
+   Created by labs on 21/02/16.
+
+.ui.card(rv-each-row='data.rows')
+    .left.aligned.content
+        .header =] {row.map_filiais_key} - {row.bplname}
+        .meta.cursor(data-help='Este é o código que a filial é identificada no software de retaguarda', data-variation="very wide")
+            |   Cód. Retaguarda: {row.bplid}
+
+        .description
+            p(rv-if='row.cliente')
+                i.green.checkmark.icon
+                | Cliente relacionado: {row.dflcust} - {row.cliente}
+
+            p(rv-if='row.fornecedor')
+                i.green.checkmark.icon
+                | Fornecedor relacionado: {row.dflvendor} - {row.fornecedor}
+
+            p(rv-if='row.whscode')
+                i.green.checkmark.icon
+                | Depósito padrão: {row.whscode} - {row.whsname}
+
+            p(rv-if='row.listnum')
+                i.green.checkmark.icon
+                | Lista de Preço: {row.listnum} - {row.listname}
+
+    .extra.content
+        p(rv-unless='row.cliente')
+            i.red.warning.icon
+            |A filial não possui um cliente relacionado na retaguarda
+        p(rv-unless='row.fornecedor')
+            i.red.warning.icon
+            |A filial não possui um fornecedor relacionado na retaguarda
+        p(rv-unless='row.whscode')
+            i.red.warning.icon
+            |A filial não possui um depósito padrão
+        p(rv-unless='row.listnum')
+            i.red.warning.icon
+            |A filial não possui uma lista de preços padrão
+
+    .extra.content
+        span.left.floated.button
+            button.ui.orange.icon.mini.button(rv-data-action='api.form', rv-data-key='row.map_filiais_key')
+                i.edit.icon
+                | Editar
+        span.right.floated.button
+            button.ui.red.icon.mini.button(rv-data-action='api.form', rv-data-key='row.map_filiais_key')
+                i.delete.icon
+                | Remover

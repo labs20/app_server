@@ -1,0 +1,31 @@
+extends header
+
+block content
+
+    div.ui.relative.menu.hz-topbar
+        div.ui.container
+            h2.ui.header
+                img(src='imgs/_logos/blueone.png')
+                .content
+                    span Supervisão e Monitoramento
+                    .sub.header Central Administrativa
+
+                // Menu
+                .main-menu
+                    div.ui.basic.white.buttons
+                        button.ui.button.menu-principal(
+                                rv-each-item='data.rows',
+                                rv-data-action='item.api',
+                                rv-on-click='click',
+                                rv-data-area='item.area'
+                            )
+                            i(rv-class='item.icon')
+                            label {item.label}
+                            i.alerta_entrada.hidden.yellow.warning.sign.slow.pulse.transition.looping.icon
+
+    div#area_geral.ui.hz-area
+        include _areas/tarefas
+
+        include _areas/configuracoes
+
+        include _areas/integracoes

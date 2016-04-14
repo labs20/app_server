@@ -1,0 +1,15 @@
+
+.ui.segment.height{
+    height: 450px;
+    overflow: auto;
+}
+
+.disabled>.content,
+.disabled>.item {
+    color: red !important;
+    text-decoration: line-through;
+}
+
+.hidden {
+    display: none !important;
+}

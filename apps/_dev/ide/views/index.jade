@@ -1,0 +1,162 @@
+doctype html
+html
+    head
+        title= title
+
+        meta(charset = 'utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+
+        // JQuery
+        script(type='text/javascript', src='js/3rd/jquery/jquery-2.1.1.min.js')
+        script(type='text/javascript', src='js/3rd/jquery/jquery-ui.min.js')
+
+        // Alertify
+        link(rel='stylesheet', href="js/3rd/alertifyjs/css/alertify.min.css")
+        link(rel='stylesheet', href="js/3rd/alertifyjs/css/themes/default.min.css", id="toggleCSS")
+        script(type="application/javascript", src="js/3rd/alertifyjs/alertify.min.js")
+
+        // Semantic
+        link(rel='stylesheet', href='js/3rd/semantic/dist/semantic.min.css')
+        script(type='application/javascript', src='js/3rd/semantic/dist/semantic.js')
+
+        // Rivet
+        script(type='text/javascript', src='js/3rd/rivets/rivets.min.js')
+        script(type='text/javascript', src='js/3rd/rivets/stdlib.js')
+
+        // Momentjs
+        script(type='text/javascript', src='js/3rd/moment/moment-with-locales.min.js')
+
+        // Tshark
+        link(rel="stylesheet", href="js/v3/_engine.css")
+        script(type="application/javascript", src="js/v3/_extends.js")
+        script(type="application/javascript", src="js/v3/tshark.js")
+        script(type="application/javascript", src="js/v3/_api.js")
+        script(type="application/javascript", src="js/v3/_modulo.js")
+        script(type="application/javascript", src="js/v3/_dataset.js")
+        script(type="application/javascript", src="js/v3/_forms.js")
+
+        // App
+        link(rel='stylesheet', href='css/app.css')
+        script(type='application/javascript', src='index.js')
+
+    body
+        .ui.segment
+            #ide.container(style='margin: 15px')
+                h2.ui.header
+                    i(rv-class='info.icon')
+                    .content
+                        |   {info.titulo}
+                        .sub.header {info.desc}
+
+                .form.ui
+                    h4.ui.dividing.header Conexão ao banco
+                    .field
+                        .fields
+
+                            // Select de conexões
+                            .four.wide.field
+                                select.ui.dropdown(data-set='sys.dev.ide.conn',
+                                        on-change='refreshTables',
+                                        placeholder='Selecione...'
+                                    )
+                                    option(
+                                        rv-each-db='conn.rows',
+                                        rv-value='db._index_'
+                                        rv-text='db.id'
+                                    )
+                            .two.wide.field
+                                button.ui.green.button(rv-on-click='refreshTables')
+                                    i.refresh.icon
+                                    | Refresh
+                    p &nbsp;
+
+                    .field
+                        .fields
+                            .six.wide.field
+                                h4.ui.dividing.header
+                                    i.database.icon
+                                    .content
+                                        |Tabelas
+
+                                // Lista de tabelas
+                                .ui.segment.height
+                                    .ui.divided.selection.list
+                                        .item.cursor(
+                                            rv-each-tabela='tabelas.rows',
+                                            rv-data-id='tabela.name',
+                                            rv-on-click='addTable'
+                                        )
+                                            .right.floated.content
+                                                i.green.arrow.circle.outline.inverted.right.icon
+                                            i.server.icon
+                                            .content
+                                                .header {tabela.name}
+
+                            .five.wide.field
+                                h4.ui.dividing.header
+                                    i.cube.icon
+                                    | Package
+
+                                // Area de criação de package
+                                .field
+                                    .two.fields
+                                        .seven.wide.field
+                                            select.ui.fluid.dropdown(rv-value='package.owner')
+                                                option(
+                                                    rv-each-db='obj.rows',
+                                                    rv-value='db.id'
+                                                    rv-text='db.id'
+                                                )
+
+                                        .seven.wide.field
+                                            .ui.input
+                                                input.cursor.ui(rv-value='package.id', placeholder='Package')
+
+                                        .two.wide.field
+                                            button.ui.green.icon.button(rv-on-click='createPackage')
+                                                i.inverted.chevron.circle.right.cursor.icon
+
+                                .ui.divided.selection.list
+                                    .item.cursor(
+                                        rv-each-mod='package.modulos.rows',
+                                        rv-data-id='mod.name',
+                                        rv-on-click='delTable'
+                                    )
+                                        .right.floated.content
+                                            i.red.circle.inverted.minus.icon
+                                        i.settings.icon
+                                        .content
+                                            .header {mod.name}
+                                            .description
+
+                            .five.wide.field
+                                h4.ui.dividing.header
+                                    i.settings.icon
+                                    | Objetos de Negócio na biblioteca
+
+                                .ui.segment.height
+                                    .ui.accordion
+                                        .ident(rv-each-o='obj.rows')
+                                            .title
+                                                i.circular.folder.icon
+                                                |{o.id}
+                                            .content
+                                                .ui.accordion
+                                                    .ident(rv-each-pack='o.sub')
+                                                        .title
+                                                            i.cubes.icon
+                                                            |{pack.id}
+                                                        .content
+                                                            .ui.accordion
+                                                                .ident(rv-each-mod='pack.sub')
+                                                                    .title
+                                                                        i.settings.icon
+                                                                        |{mod.id}
+
+                                                                    .content
+                                                                        .ui.accordion
+                                                                            .ident(rv-each-arq='mod.sub')
+                                                                                .title
+                                                                                    i.file.outline.icon
+                                                                                    |{arq.id}

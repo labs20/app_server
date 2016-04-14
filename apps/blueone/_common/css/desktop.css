@@ -1,0 +1,184 @@
+/* Header */
+.hz-topbar {
+    height: 150px;
+    margin: 0 !important;
+}
+
+.hz-topbar:before{
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    content: "";
+    opacity: 0.1;
+    position: absolute;
+    background-image: url("../imgs/_intf/bg5.jpg");
+    background-repeat: no-repeat;
+    background-position: 0px -367px;
+    background-size: cover;
+}
+
+.hz-topbar .sub {
+    margin-top: 0.5em !important;
+}
+
+.hz-topbar img {
+    width: 5.3em !important;
+    margin-top: 0.7em !important;
+    margin-left: 0.3em !important;
+    transition: all 0.3s;
+}
+
+.hz-topbar div {
+    color: white !important;
+    font-size: 0.6em !important;
+    transition: all 0.3s;
+}
+.hz-topbar .content {
+    font-size: 1.5em !important;
+    transition: all 0.3s;
+}
+
+
+/* Menu */
+.main-menu{
+    height: 38px;
+    border: 1px solid rgb(231, 232, 240);
+    position: absolute;
+    right: -1px;
+    bottom: 4px;
+    border-radius: 5px 0 0 5px;
+}
+.main-menu .button :hover{
+    color: #000000 !important;
+}
+.main-menu .ui.basic.buttons .button{
+    color: white !important;
+    transition: all 0.5s;
+}
+
+.sub-menu{
+    border-radius: 0 0 5px 5px !important;
+    transition: all 1.9s;
+    background-color: #164A75;
+    z-index: 90;
+}
+.sub-menu.ui.button :hover{
+    color: #000000 !important;
+}
+.sub-menu.ui.basic.buttons .button{
+    color: white !important;
+    transition: all 0.5s;
+}
+
+
+.hz-area {
+    width: 100%;
+    height: calc(100% - 147px) !important;
+    position: relative;
+    opacity: 1;
+    display: block;
+    background-color: #f7f7f7 !important;
+    border-top: 0px;
+}
+.hz-area:before {
+    background: url("../imgs/_logos/blueone.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    position: absolute;
+    opacity: 0.1;
+    content: " ";
+    height: 100%;
+    width: 100%;
+}
+
+.ts-area-menu{
+    margin-top: 10px;
+    margin-left: 8px;
+}
+
+.ts-area-container{
+    transition: all 0.3s;
+}
+
+
+/* Tarefas */
+#tarefas {
+    height: 100%;
+}
+
+#tarefas:before {
+    content: "";
+    background-image: url("../imgs/_intf/prato2.jpg");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    left: 0;
+    background-size: cover;
+}
+
+
+
+
+/* Integra��o */
+#integracoes {
+    height: 100%;
+    display: none;
+}
+#integracoes:before {
+    content: "";
+    background-image: url("../imgs/_intf/bg8.jpg");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    left: 0;
+    background-size: cover;
+}
+
+/* Integra��o */
+#comunicacoes {
+    height: 100%;
+    display: none;
+}
+#comunicacoes:before {
+    content: "";
+    background-image: url("../imgs/_intf/communicate02.jpg");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    left: 0;
+    background-size: cover;
+}
+
+/* Integra��o */
+#acesso {
+    height: 100%;
+    display: none;
+}
+#acesso:before {
+    content: "";
+    background-image: url("../imgs/_intf/order02.jpg");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    left: 0;
+    background-size: cover;
+}
+
+/* Integra��o */
+#configuracoes {
+    height: 100%;
+    display: none;
+}
+#configuracoes:before {
+    content: "";
+    background-image: url("../imgs/_intf/bluebg01.jpg");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    left: 0;
+    background-size: cover;
+}

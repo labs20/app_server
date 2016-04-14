@@ -1,0 +1,49 @@
+// Created by labs on 19/02/16.
+
+#configuracoes.ui.fluid.container
+
+    div.ui.grid(style='height: 100%;')
+
+        // Menu
+        #menu_area.four.wide.column
+
+        // Area Central
+        div.twelve.wide.column
+
+            // Janela central
+            #configuracoes_list.left.aligned.hz-box.ts-round.ts-center.ts-hidden(style='height: 84%; width: 94%;')
+                .secondary.ui.menu
+
+                    // Título da janela
+                    h3.ui.left.aligned.dividing.fluid.header
+                        i.icon(rv-class='info.icon')
+                        div.content.flowing.popup(rv-data-content='info.help', data-variation="very wide")
+                            span.cursor(rv-text='info.titulo')
+                            .sub.header.cursor(rv-text='info.info')
+
+                    // Área de pesquisa e botões
+                    .right.menu
+                        .item
+                            div.ui.icon.input
+                                i.search.icon
+                                input(type='text', placeholder='Pesquisar...',
+                                    rv-data-action='api.search'
+                                )
+                        .item
+                            button.ui.green.labeled.icon.button(rv-data-action='api.form')
+                                i.add.icon
+                                |   Acrescentar
+
+                // Listagem
+                #configuracoes_listagem.two.cards.ui(style='height: 88%; overflow: scroll;')
+
+
+            #configuracoes_form.ui.modal
+                .header
+                    i.big.edit.icon
+                    |  Titulo
+                div.content
+                    .description Edicao
+                div.actions
+                    div.ui.button.cancel Cancelar
+                    div.ui.button.ok OK
